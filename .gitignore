@@ -1,0 +1,7 @@
+notes.md
+twitter-archive
+*.zip
+venv
+.env
+*.csv
+*.txt
