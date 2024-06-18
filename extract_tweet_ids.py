@@ -12,23 +12,20 @@ def extract_tweet_ids(js_file_path: str) -> None:
     - None: Outputs a file named 'tweet_ids.txt' with one tweet ID per line.
     """
     try:
-        # Read the contents of the tweets.js file
+        # read tweets.js file
         with open(js_file_path, 'r') as f:
             content = f.read()
 
-        # Remove the JavaScript variable assignment to isolate the JSON part
+        # isolate JSON objects and load content
         json_str = re.sub(r'window\.YTD\.tweets\.part\d+\s*=\s*', '', content)
-
-        # Load the JSON content
         tweets_data = json.loads(json_str)
 
-        # Extract the tweet IDs
+        # extract the tweet IDs
         tweet_ids = [tweet['tweet']['id'] for tweet in tweets_data]
 
-        # Save the tweet IDs to a text file
+        # save the tweet ids to file
         output_file_name = 'tweet_ids.csv'
         with open(output_file_name, 'w') as f:
-            f.write("tweet_id,status\n")
             for tweet_id in tweet_ids:
                 f.write(f"{tweet_id},pending\n")
 
@@ -37,7 +34,7 @@ def extract_tweet_ids(js_file_path: str) -> None:
     except Exception as e:
         print(f"An error occurred: {e}")
 
-# Example usage
+
 if __name__ == "__main__":
-    js_file_path = './twitter-archive/data/tweets.js'  # Replace with the path to your tweets.js file
+    js_file_path = './twitter-archive/data/tweets.js'  
     extract_tweet_ids(js_file_path)
