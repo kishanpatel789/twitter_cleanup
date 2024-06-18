@@ -1,5 +1,6 @@
 import json
 import re
+import argparse
 
 def extract_tweet_ids(js_file_path: str) -> None:
     """
@@ -36,5 +37,17 @@ def extract_tweet_ids(js_file_path: str) -> None:
 
 
 if __name__ == "__main__":
-    js_file_path = './twitter-archive/data/tweets.js'  
-    extract_tweet_ids(js_file_path)
+    js_file_path_default = './twitter-archive/data/tweets.js'
+
+    parser = argparse.ArgumentParser(
+        description='Extracts tweet IDs from Twitter archive',
+    )  
+    parser.add_argument(
+        '--file_name',
+        default=js_file_path_default,
+        help="path to file 'tweets.js', which contains tweet objects for archive",
+        required=False,
+    )
+    args = parser.parse_args()
+
+    extract_tweet_ids(args.file_name)
