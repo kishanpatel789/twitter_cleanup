@@ -10,7 +10,7 @@ def extract_tweet_ids(js_file_path: str) -> None:
   - js_file_path (str): The file path to the tweets.js file.
 
   Returns:
-  - None: Outputs a file named 'tweet_ids.txt' with one tweet ID per line.
+  - None: Outputs a file named 'tweet_ids.csv' with one tweet ID per line.
   """
   try:
     # read tweets.js file
