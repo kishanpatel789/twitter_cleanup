@@ -4,4 +4,4 @@ twitter-archive
 venv
 .env
 *.csv
-*.txt
+deletion_log.txt
