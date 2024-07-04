@@ -5,3 +5,4 @@ venv
 .env
 *.csv
 deletion_log.txt
+.DS_Store
